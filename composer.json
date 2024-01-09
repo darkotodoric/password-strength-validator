@@ -1,0 +1,23 @@
+{
+    "name": "darkotodoric/password-strength-validator",
+    "description": "A lightweight PHP library for checking password strength",
+    "keywords": ["password", "strength", "validator", "password-strength-validator"],
+    "homepage": "https://github.com/darkotodoric/password-strength-validator",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Darko Todorić",
+            "homepage": "https://github.com/darkotodoric"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-0": { "PasswordStrengthValidator": "" }
+    }
+}
