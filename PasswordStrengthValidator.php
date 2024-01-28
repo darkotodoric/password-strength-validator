@@ -77,7 +77,7 @@ class PasswordStrengthValidator
      */
     private function isLongEnough(): bool
     {
-        return strlen($this->password) >= $this->minLength;
+        return mb_strlen($this->password) >= $this->minLength;
     }
 
     /**
