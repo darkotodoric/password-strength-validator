@@ -1,4 +1,4 @@
-# URL Slug Generator
+# Password Strength Validator
 
 ![Packagist License](https://img.shields.io/packagist/l/darkotodoric/password-strength-validator)
 ![Packagist Version](https://img.shields.io/packagist/v/darkotodoric/password-strength-validator)
