@@ -3,22 +3,25 @@
 class PasswordStrengthValidator
 {
     /** @var string */
-    private $password;
+    private string $password;
+
+    /** @var string */
+    private string $errorMessage;
 
     /** @var int */
-    private $minLength;
+    private int $minLength;
 
     /** @var bool */
-    private $requireSpecialChar;
+    private bool $requireSpecialChar;
 
     /** @var bool */
-    private $requireNumber;
+    private bool $requireNumber;
 
     /** @var bool */
-    private $requireUpperCase;
+    private bool $requireUpperCase;
 
     /** @var bool */
-    private $requireLowerCase;
+    private bool $requireLowerCase;
 
     /**
      * @param string $password
@@ -30,12 +33,13 @@ class PasswordStrengthValidator
      */
     public function __construct(
         string $password,
-        int $minLength = 6,
-        bool $requireSpecialChar = true,
-        bool $requireNumber = true,
-        bool $requireUpperCase = true,
-        bool $requireLowerCase = true
-    ) {
+        int    $minLength = 6,
+        bool   $requireSpecialChar = true,
+        bool   $requireNumber = true,
+        bool   $requireUpperCase = true,
+        bool   $requireLowerCase = true
+    )
+    {
         $this->password = $password;
         $this->minLength = $minLength;
         $this->requireSpecialChar = $requireSpecialChar;
@@ -50,26 +54,36 @@ class PasswordStrengthValidator
     public function isValid(): bool
     {
         if (!$this->isLongEnough()) {
+            $this->errorMessage = "Password length must be at least {$this->minLength} characters long.";
             return false;
         }
 
         if ($this->requireSpecialChar && !$this->hasSpecialChar()) {
+            $this->errorMessage = "Special characters required.";
             return false;
         }
 
         if ($this->requireNumber && !$this->hasNumber()) {
+            $this->errorMessage = "Number required.";
             return false;
         }
 
         if ($this->requireUpperCase && !$this->hasUpperCase()) {
+            $this->errorMessage = "Uppercase required.";
             return false;
         }
 
         if ($this->requireLowerCase && !$this->hasLowerCase()) {
+            $this->errorMessage = "Lowercase required.";
             return false;
         }
 
         return true;
+    }
+
+    public function getErrorMessage(): string
+    {
+        return $this->errorMessage;
     }
 
     /**
